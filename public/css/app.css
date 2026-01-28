@@ -1,0 +1,619 @@
+/* CSS Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #4361ee;
+    --primary-dark: #3a56d4;
+    --secondary: #7209b7;
+    --success: #06d6a0;
+    --danger: #ef476f;
+    --warning: #ffd166;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-600: #6c757d;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius: 8px;
+    --radius-sm: 4px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    color: var(--dark);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background-color: rgba(67, 97, 238, 0.95);
+}
+
+.nav-brand {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-brand::before {
+    content: "💎";
+    font-size: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary) !important;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+}
+
+/* MAIN CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADINGS */
+h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: var(--primary);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+/* TABLE */
+.table-container {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-top: 25px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 800px;
+}
+
+.table thead {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+}
+
+.table th {
+    padding: 18px 16px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+.table th:first-child {
+    border-top-left-radius: var(--radius);
+}
+
+.table th:last-child {
+    border-top-right-radius: var(--radius);
+}
+
+.table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--gray-200);
+    transition: var(--transition);
+}
+
+.table tbody tr {
+    transition: var(--transition);
+}
+
+.table tbody tr:hover {
+    background: rgba(67, 97, 238, 0.05);
+    transform: translateX(4px);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* BADGES */
+.badge {
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.badge-paid {
+    background: rgba(6, 214, 160, 0.15);
+    color: #0a8754;
+    border: 1px solid rgba(6, 214, 160, 0.3);
+}
+
+.badge-unpaid {
+    background: rgba(239, 71, 111, 0.15);
+    color: #c2185b;
+    border: 1px solid rgba(239, 71, 111, 0.3);
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 24px;
+    position: relative;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--dark);
+    font-size: 14px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--gray-300);
+    font-family: inherit;
+    font-size: 15px;
+    transition: var(--transition);
+    background: var(--light);
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    background: white;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* BUTTONS */
+.btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: 0.3px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--success) 0%, #05b98a 100%);
+    color: white;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #05b98a 0%, #04a077 100%);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger) 0%, #d43f5a 100%);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #d43f5a 0%, #c2185b 100%);
+}
+
+/* ACTION BUTTONS */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+/* STATUS INDICATORS */
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-indicator::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .container {
+        margin: 20px;
+        padding: 25px;
+    }
+    
+    h1 {
+        font-size: 26px;
+    }
+    
+    .table-container {
+        margin: 0 -20px;
+        border-radius: 0;
+    }
+}
+
+
+/* ===============================
+   Action Buttons in Table Cells
+================================= */
+.table td .btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    gap: 6px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    min-width: 80px;
+}
+
+/* Edit Button */
+.table td .btn-edit {
+    background: linear-gradient(135deg, #4dabf7 0%, #339af0 100%);
+    color: white;
+    box-shadow: 0 2px 4px rgba(51, 154, 240, 0.2);
+}
+
+.table td .btn-edit:hover {
+    background: linear-gradient(135deg, #339af0 0%, #228be6 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(51, 154, 240, 0.3);
+}
+
+/* Delete Button */
+.table td .btn-delete {
+    background: linear-gradient(135deg, #ff8787 0%, #fa5252 100%);
+    color: white;
+    box-shadow: 0 2px 4px rgba(250, 82, 82, 0.2);
+}
+
+.table td .btn-delete:hover {
+    background: linear-gradient(135deg, #fa5252 0%, #e03131 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(250, 82, 82, 0.3);
+}
+
+/* Add icons using pseudo-elements */
+.table td .btn-edit::before {
+    content: "✏️";
+    font-size: 12px;
+    margin-right: 4px;
+    opacity: 0.9;
+}
+
+.table td .btn-delete::before {
+    content: "🗑️";
+    font-size: 12px;
+    margin-right: 4px;
+    opacity: 0.9;
+}
+
+/* Table cell padding */
+.table td {
+    padding: 16px 8px !important;
+}
+
+/* Flex container for action buttons */
+.table td.actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+}
+
+/* Hover animation for buttons */
+.table td .btn-action:hover {
+    animation: buttonPulse 0.4s ease;
+}
+
+@keyframes buttonPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Delete button "confirming" state */
+.table td .btn-delete.confirming {
+    background: linear-gradient(135deg, #ffd43b 0%, #fcc419 100%);
+    color: #495057;
+    animation: pulseWarning 1.5s infinite;
+}
+
+@keyframes pulseWarning {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .table td .btn-action {
+        padding: 6px 12px;
+        font-size: 12px;
+        min-width: 70px;
+    }
+    
+    .table td.actions {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+
+/* Subtle fade-in for table rows */
+.table tr {
+    animation: fadeInRow 0.5s ease-out forwards;
+}
+
+@keyframes fadeInRow {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+
+.errors {
+    background: #ffe6e6;
+    color: #cc0000;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #cc0000;
+    border-radius: 6px;
+}
+
+.errors ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.filter-form select,
+.filter-form input[type="date"] {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.btn-filter {
+    padding: 8px 20px;
+    background-color: #339af0; /* Blue background */
+    color: #fff;               /* White text */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn-filter:hover {
+    background-color: #228be6;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 768px) {
+    .filter-form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+/* Alert styling */
+.alert {
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Success alert color */
+.alert-success {
+    background-color: #4dabf7;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Fade out animation */
+.alert.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+
+/* View Button */
+.table td .btn-view {
+    background: linear-gradient(135deg, #63e6be 0%, #38d9a9 100%); /* greenish gradient */
+    color: white;
+    box-shadow: 0 2px 4px rgba(56, 217, 169, 0.2);
+}
+
+.table td .btn-view:hover {
+    background: linear-gradient(135deg, #38d9a9 0%, #20c997 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(56, 217, 169, 0.3);
+}
+
+/* Icon using pseudo-element */
+.table td .btn-view::before {
+    content: "👁️"; /* eye icon */
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* Keep common styles same as other buttons */
+.table td .btn-view {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    gap: 6px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    min-width: 80px;
+}
